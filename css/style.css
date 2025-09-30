@@ -155,16 +155,16 @@ textarea{min-height:120px;resize:vertical}
   .hero--cover-top::before{background-position:center 8%}
 }
 
-/* 桌機 hero 顯示更多下緣、把焦點往上 */
-@media (min-width: 1024px){
+/* 桌機不裁切：以 contain 完整顯示 hero 圖 */
+@media (min-width: 1200px){
   .hero{
-    min-height: 90vh;              /* 原本 68vh；提高一點就不會切到下方 */
+    min-height: auto;               /* 不固定高度，交給內容撐高 */
   }
   .hero--cover-top::before{
-    background-position: center 12%; /* 原本 center 6%；往上移一些焦點 */
+    background-size: contain;       /* 不裁切，完整顯示 */
+    background-position: top center;
   }
   .hero .hero-wrap{
-    padding: 120px 0 80px;         /* 文字區塊也多留一點上下內距 */
+    padding: 100px 0 80px;          /* 保持文字間距 */
   }
 }
-
