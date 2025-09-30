@@ -26,10 +26,21 @@ body{font-family:"PingFang TC","Noto Sans TC","Microsoft JhengHei",system-ui,-ap
 .hero h1{margin:0 0 12px;font-size:clamp(32px,4.8vw,62px);line-height:1.1;text-shadow:0 6px 18px rgba(0,0,0,.22)}
 .hero p{margin:0;opacity:.98;font-weight:700;font-size:clamp(16px,2.1vw,22px);text-shadow:0 3px 10px rgba(0,0,0,.18)}
 
-/* 主體左右欄 */
-.main-two-col{display:flex;gap:40px;align-items:flex-start;margin-top:40px}
-.left-col{flex:2}
-.hot-column{flex:1;margin-top:80px} /* 🔥 往下移與營業項目對齊 */
+/* --- 左右版面 Grid --- */
+.main-two-col{
+  display:grid;
+  grid-template-columns:2fr 1fr; /* 左2 右1 */
+  gap:40px;
+  align-items:start;
+  margin-top:40px;
+}
+.left-col{min-width:0;}
+.hot-column{min-width:0;margin-top:80px;} /* 往下對齊營業項目 */
+
+@media (max-width:768px){
+  .main-two-col{grid-template-columns:1fr;}
+  .hot-column{margin-top:40px;}
+}
 
 /* Sections */
 .section{padding:40px 0}
@@ -52,20 +63,53 @@ body{font-family:"PingFang TC","Noto Sans TC","Microsoft JhengHei",system-ui,-ap
 .pico{display:inline-grid;place-items:center;width:38px;height:38px}
 .pico svg{width:26px;height:26px}
 
-/* Hot cards */
+/* Hot cards 公告欄 */
 .hot-scroll{max-height:600px;overflow-y:auto;padding-right:6px}
-.hot-card{background:#fff;border:2px solid #d9e3e0;border-radius:12px;box-shadow:0 6px 16px rgba(0,0,0,.12);text-align:center;margin-bottom:20px}
-.hot-card-imgbox{position:relative;width:100%;padding-top:141.4%;background:#f9f9f9;overflow:hidden}
-.hot-card-imgbox img{position:absolute;inset:0;width:100%;height:100%;object-fit:contain;transition:transform .18s ease}
+.hot-card{
+  background:#fff;
+  border:2px solid #d9e3e0;
+  border-radius:12px;
+  box-shadow:0 6px 16px rgba(0,0,0,.12);
+  text-align:center;
+  margin-bottom:20px;
+  transition:transform .2s ease, box-shadow .2s ease;
+}
+.hot-card:hover{
+  transform:translateY(-3px);
+  box-shadow:0 10px 24px rgba(0,0,0,.18);
+}
+.hot-card-imgbox{
+  position:relative;
+  width:100%;
+  padding-top:141.4%; /* A4 比例 */
+  background:#f9f9f9;
+  overflow:hidden;
+}
+.hot-card-imgbox img{
+  position:absolute;
+  inset:0;
+  width:100%;
+  height:100%;
+  object-fit:contain;
+  transition:transform .18s ease;
+}
 .hot-card-imgbox img:hover{transform:scale(1.03)}
-.hot-card-body{padding:18px 16px 24px;text-align:center}
-.hot-card-body .btn{padding:12px 18px;border-radius:12px;font-weight:800;border:2px solid var(--green);background:var(--green);color:#fff;text-decoration:none;display:inline-block;box-shadow:var(--shadow)}
+.hot-card-body{
+  padding:18px 16px 24px;
+  text-align:center;
+}
+.hot-card-body .btn{
+  padding:12px 18px;
+  border-radius:12px;
+  font-weight:800;
+  border:2px solid var(--green);
+  background:var(--green);
+  color:#fff;
+  text-decoration:none;
+  display:inline-block;
+  box-shadow:var(--shadow);
+  margin-top:10px; /* 與圖片保留空隙 */
+}
 
 /* Footer */
 .footer{background:#0f2b25;color:#cfe3dc;padding:32px 0;text-align:center}
-
-/* RWD */
-@media(max-width:920px){
-  .main-two-col{flex-direction:column}
-  .hot-column{margin-top:40px}
-}
