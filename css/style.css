@@ -135,6 +135,12 @@ textarea{min-height:120px;resize:vertical}
   display:inline-block;
   box-shadow:var(--shadow);
 }
+.hot-card-link{
+  display:block;
+  text-decoration:none;
+  color:inherit;
+}
+
 
 /* RWD */
 @media(max-width:768px){
