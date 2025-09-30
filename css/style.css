@@ -156,45 +156,26 @@ textarea{min-height:120px;resize:vertical}
 @media (min-width:640px){ .hot-grid{ grid-template-columns: 1fr 1fr; } }
 @media (min-width:1024px){ .hot-grid{ grid-template-columns: 1fr 1fr 1fr; } }
 
-.hot-card {
-  background: #fff;
-  border: 2px solid #d9e3e0;
-  border-radius: 12px;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.08);
-  text-align: center;
-  overflow: hidden;
-  transition: transform .2s ease, box-shadow .2s ease;
-}
-
-.hot-card:hover {
-  transform: translateY(-3px);
-  box-shadow: 0 6px 16px rgba(0,0,0,0.12);
-}
-
-/* 🔥 首頁 DM 以 A4 長寬比縮小顯示 */
-.hot-card img {
+/* --- 讓熱門方案 DM 以 A4 比例縮圖（100% 兼容） --- */
+.hot-card-imgbox{
+  position: relative;
   width: 100%;
-  aspect-ratio: 210/297; /* A4 比例 */
-  object-fit: contain;   /* 不裁切，留白顯示整張 DM */
-  background: #f9f9f9;   /* 背景淺灰，避免白邊不明顯 */
+  padding-top: 141.4%; /* A4 直向比例 297/210 ≈ 1.414 → 141.4% */
+  background: #f9f9f9; /* 留白背景，好看不刺眼 */
+  overflow: hidden;
+  border-bottom: 1px solid #eee; /* 和卡片分隔更俐落（可選） */
+}
+
+.hot-card-imgbox img{
+  position: absolute;
+  inset: 0;               /* top:0; right:0; bottom:0; left:0; 的縮寫 */
+  width: 100%;
+  height: 100%;
+  object-fit: contain;    /* 完整顯示，不裁切 */
   display: block;
   transition: transform .2s ease;
 }
 
-.hot-card img:hover {
-  transform: scale(1.03);
-}
-
-.hot-card-body {
-  padding: 12px 16px 20px;
-}
-.hot-card-body h3 {
-  font-size: 18px;
-  color: var(--deep);
-  margin: 0 0 8px;
-}
-.hot-card-body p {
-  font-size: 14px;
-  color: #555;
-  margin: 0;
+.hot-card a:hover .hot-card-imgbox img{
+  transform: scale(1.03); /* 輕微 hover 動效（可移除） */
 }
