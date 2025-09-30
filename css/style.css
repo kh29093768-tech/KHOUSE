@@ -78,3 +78,50 @@ textarea{min-height:120px;resize:vertical}
   color:#fff;
 }
 
+/* --- 熱門方案佈告欄 --- */
+.hot-grid {
+  display: grid;
+  gap: 20px;
+  grid-template-columns: 1fr;
+}
+@media (min-width:640px){ .hot-grid{ grid-template-columns: 1fr 1fr; } }
+@media (min-width:1024px){ .hot-grid{ grid-template-columns: 1fr 1fr 1fr; } }
+
+.hot-card {
+  background: #fff;
+  border: 2px solid #d9e3e0;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+  text-align: center;
+  overflow: hidden;
+  transition: transform .2s ease, box-shadow .2s ease;
+}
+.hot-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 6px 16px rgba(0,0,0,0.12);
+}
+
+.hot-card img {
+  width: 100%;
+  max-height: 180px; /* 首頁限制高度 */
+  object-fit: cover;
+  display: block;
+  transition: transform .2s ease;
+}
+.hot-card img:hover {
+  transform: scale(1.03);
+}
+
+.hot-card-body {
+  padding: 12px 16px 20px;
+}
+.hot-card-body h3 {
+  font-size: 18px;
+  color: #064e2e;
+  margin: 0 0 8px;
+}
+.hot-card-body p {
+  font-size: 14px;
+  color: #555;
+  margin: 0;
+}
