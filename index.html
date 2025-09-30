@@ -7,17 +7,7 @@
   <meta name="description" content="室內裝修與代書業務，一站服務。專業裝修，專業代書—交給我們，家與事都放心。">
   <meta name="description" content="廣華國際開發有限公司，專業浴室廚房翻修，代書法律諮詢，一站式服務，免費丈量規劃最省方案。">
   <meta name="keywords" content="廣華國際開發有限公司, 哇屋裝修, WOW HOUSE, 浴室翻修, 廚房翻修, 裝修, 代書服務"> 
-  <link rel="stylesheet" href="css/style.css?v=4">
-  <style>
-/* --- 內嵌：熱門方案佈告欄樣式（臨時覆蓋，保證生效） --- */
-.hot-grid{display:grid;gap:20px;grid-template-columns:1fr}
-@media (min-width:640px){.hot-grid{grid-template-columns:1fr 1fr}}
-@media (min-width:1024px){.hot-grid{grid-template-columns:1fr 1fr 1fr}}
-
-.hot-card{background:#fff;border:2px solid #d9e3e0;border-radius:12px;box-shadow:0 4px 12px rgba(0,0,0,.08);text-align:center;overflow:hidden;transition:transform .2s ease,box-shadow .2s ease}
-.hot-card img{width:100%;max-height:180px;object-fit:cover;display:block}
-.hot-card-body{padding:12px 16px 20px}
-</style>
+  <link rel="stylesheet" href="css/style.css?v=4" />
 </head>
 <body>
   <nav class="topnav">
@@ -40,14 +30,17 @@
     </div>
   </header>
 
-  <!-- 🔥 熱門方案佈告欄 -->
+  <!-- 🔥 熱門方案佈告欄（A4 比例縮圖、不裁切） -->
   <section class="section alt" id="hot-plans">
     <div class="container">
       <h2 class="section-title">熱門方案</h2>
       <div class="hot-grid">
+        <!-- 卡片 1 -->
         <div class="hot-card">
-          <a href="images/dm-bathroom.jpg" target="_blank">
-            <img src="images/dm-bathroom.jpg" alt="浴室翻修 DM" />
+          <a href="images/dm-bathroom.jpg" target="_blank" rel="noopener">
+            <div class="hot-card-imgbox">
+              <img src="images/dm-bathroom.jpg" alt="浴室翻修 DM">
+            </div>
           </a>
           <div class="hot-card-body">
             <h3>浴室翻修專案</h3>
@@ -55,23 +48,16 @@
           </div>
         </div>
 
+        <!-- 卡片 2 -->
         <div class="hot-card">
-          <a href="images/dm-kitchen.jpg" target="_blank">
-            <img src="images/dm-kitchen.jpg" alt="廚房翻修 DM" />
+          <a href="images/dm-kitchen.jpg" target="_blank" rel="noopener">
+            <div class="hot-card-imgbox">
+              <img src="images/dm-kitchen.jpg" alt="廚房翻修 DM">
+            </div>
           </a>
           <div class="hot-card-body">
             <h3>廚房翻修專案</h3>
             <p>五星級質感廚房升級</p>
-          </div>
-        </div>
-
-        <div class="hot-card">
-          <a href="images/dm-waterproof.jpg" target="_blank">
-            <img src="images/dm-waterproof.jpg" alt="防水抓漏 DM" />
-          </a>
-          <div class="hot-card-body">
-            <h3>防水抓漏整修</h3>
-            <p>長效防水，告別滲漏困擾</p>
           </div>
         </div>
       </div>
