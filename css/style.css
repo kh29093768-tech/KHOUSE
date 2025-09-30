@@ -29,13 +29,13 @@ body{font-family:"PingFang TC","Noto Sans TC","Microsoft JhengHei",system-ui,-ap
 /* --- 左右版面 Grid --- */
 .main-two-col{
   display:grid;
-  grid-template-columns:2fr 1fr; /* 左2 右1 */
+  grid-template-columns:2fr 1fr; /* 左2右1 */
   gap:40px;
   align-items:start;
   margin-top:40px;
 }
 .left-col{min-width:0;}
-.hot-column{min-width:0;margin-top:80px;} /* 往下對齊營業項目 */
+.hot-column{min-width:0;margin-top:80px;} /* 對齊營業項目 */
 
 @media (max-width:768px){
   .main-two-col{grid-template-columns:1fr;}
@@ -108,7 +108,7 @@ body{font-family:"PingFang TC","Noto Sans TC","Microsoft JhengHei",system-ui,-ap
   text-decoration:none;
   display:inline-block;
   box-shadow:var(--shadow);
-  margin-top:10px; /* 與圖片保留空隙 */
+  margin-top:10px;
 }
 
 /* Footer */
