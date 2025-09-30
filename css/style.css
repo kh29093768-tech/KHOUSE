@@ -1,4 +1,4 @@
-:root {
+:root{
   --green:#65b89a;
   --deep:#12332a;
   --light:#f5f7f6;
@@ -9,26 +9,20 @@
 html,body{margin:0;padding:0}
 body{
   font-family:"PingFang TC","Noto Sans TC","Microsoft JhengHei",system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
-  color:#223;
+  color:#223
 }
-
-.container{width:min(1100px,94%);margin:auto}
+.container{width:min(1200px,94%);margin:auto}
 .row{display:flex;align-items:center;gap:18px}
 
 /* Header */
-.topnav{
-  position:sticky;top:0;z-index:60;
-  background:#fff;border-bottom:1px solid #eaeaea;
-}
-.brand{
-  display:flex;align-items:center;gap:16px;color:var(--green);font-weight:900;padding:18px 0;text-decoration:none
-}
+.topnav{position:sticky;top:0;z-index:60;background:#fff;border-bottom:1px solid #eaeaea}
+.brand{display:flex;align-items:center;gap:16px;color:var(--green);font-weight:900;padding:18px 0;text-decoration:none}
 .brand img{height:64px;width:auto;border-radius:999px}
 .brand span{font-size:24px;letter-spacing:.03em;color:var(--green)}
 .topnav .spacer{flex:1}
 .navlinks .btn-white{
   background:#fff;border:2px solid var(--green);color:var(--green);
-  padding:10px 18px;border-radius:12px;font-weight:800;text-decoration:none
+  padding:10px 18px;border-radius:12px;font-weight:800
 }
 .navlinks .btn-white:hover{background:var(--green);color:#fff}
 
@@ -52,7 +46,8 @@ body{
 .iconcards{display:grid;gap:18px}
 .iconcards.three{grid-template-columns:repeat(3,1fr)}
 .icard{
-  background:#fff;border:1px solid #eaeaea;border-radius:16px;padding:22px;box-shadow:var(--shadow)
+  background:#fff;border:1px solid #eaeaea;border-radius:16px;
+  padding:22px;box-shadow:var(--shadow)
 }
 .icard .ico{width:60px;height:60px}
 .icard .ico svg{width:60px;height:60px;display:block}
@@ -63,92 +58,86 @@ body{
 /* Partners */
 .partners{display:grid;grid-template-columns:repeat(2,1fr);gap:12px}
 .partner{
-  background:#fff;border:1px solid #eaeaea;border-radius:12px;padding:12px 14px;display:flex;align-items:center;gap:10px;box-shadow:var(--shadow)
+  background:#fff;border:1px solid #eaeaea;border-radius:12px;
+  padding:12px 14px;display:flex;align-items:center;gap:10px;box-shadow:var(--shadow)
 }
 .pico{display:inline-grid;place-items:center;width:38px;height:38px}
 .pico svg{width:26px;height:26px}
 
+/* Forms */
+.form{display:grid;gap:12px}
+.grid2{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+input,textarea{
+  padding:12px 14px;border:1px solid #d6e6e1;border-radius:12px;font:inherit
+}
+textarea{min-height:120px;resize:vertical}
+.btn{
+  padding:12px 18px;border-radius:12px;font-weight:800;
+  border:2px solid transparent;box-shadow:var(--shadow);
+  text-decoration:none;display:inline-block
+}
+.btn-secondary{background:var(--green);color:#fff;border-color:var(--green)}
+
 /* Footer */
 .footer{background:#0f2b25;color:#cfe3dc;padding:32px 0;text-align:center}
 
-/* ---------- 首頁左右雙欄 ---------- */
+/* Home Grid: 左內容 + 右熱門方案 */
 .home-grid{
   display:grid;
-  grid-template-columns:2fr 1fr; /* 左大右小 */
+  grid-template-columns:2fr 1fr;
   gap:40px;
   align-items:start;
 }
-.home-left > .section-title:first-child{margin-top:0}
 
-/* 右欄固定在視窗範圍內 */
-.home-right{
-  position:sticky;
-  top:80px;            /* 依照你的 header 高度微調 */
-  align-self:start;
-}
-
-/* 熱門方案：可上下捲動的容器 */
+/* 熱門方案佈告欄 */
 .hot-scroll{
-  max-height:80vh;     /* 限制高度，出現滾動條 */
+  max-height:600px; /* 可視高度 */
   overflow-y:auto;
-  display:flex;
-  flex-direction:column;
-  gap:20px;
-  padding-right:4px;   /* 預留滾動條空間 */
+  padding-right:8px;
 }
-
-/* 熱門方案卡片 */
 .hot-card{
   background:#fff;
-  border:2px solid #d9e3e0;
-  border-radius:14px;
-  box-shadow:0 10px 24px rgba(0,0,0,.12), 0 2px 6px rgba(0,0,0,.06);
-  overflow:hidden;
+  border:1px solid #eaeaea;
+  border-radius:12px;
+  box-shadow:var(--shadow);
   text-align:center;
-  transition:transform .18s ease, box-shadow .18s ease
+  overflow:hidden;
+  transition:transform .2s ease, box-shadow .2s ease;
+  margin-bottom:20px;
 }
 .hot-card:hover{
   transform:translateY(-3px);
-  box-shadow:0 16px 36px rgba(0,0,0,.16), 0 4px 10px rgba(0,0,0,.08)
+  box-shadow:0 6px 16px rgba(0,0,0,0.12);
 }
-
-/* A4 比例縮圖（不裁切） */
 .hot-card-imgbox{
   position:relative;
   width:100%;
-  padding-top:141.4%; /* 297/210 ≈ 1.414 → A4 直向比例 */
+  padding-top:141.4%; /* A4 比例 */
   background:#f9f9f9;
+  overflow:hidden;
   border-bottom:1px solid #eee;
-  overflow:hidden
 }
 .hot-card-imgbox img{
-  position:absolute;inset:0;
-  width:100%;height:100%;
+  position:absolute;
+  inset:0;
+  width:100%;
+  height:100%;
   object-fit:contain;
-  display:block;
-  transition:transform .18s ease
 }
-.hot-card:hover .hot-card-imgbox img{transform:scale(1.02)}
-
-/* 卡片內文與按鈕 */
-.hot-card-body{padding:18px 16px 24px}
+.hot-card-body{
+  padding:18px 16px 24px;
+  text-align:center;
+}
 .hot-card-body .btn{
   margin-top:12px;
   padding:12px 18px;
   border-radius:999px;
   display:inline-block;
-  background:var(--green);
-  color:#fff;
-  border:2px solid var(--green);
-  font-weight:800;
-  text-decoration:none;
   box-shadow:var(--shadow);
-  transition:all .18s ease
 }
-.hot-card-body .btn:hover{background:#fff;color:var(--green)}
 
-/* ---------- RWD ---------- */
-@media(max-width:920px){
+/* RWD */
+@media(max-width:768px){
   .home-grid{grid-template-columns:1fr}
   .home-right{position:static}
   .hot-scroll{max-height:none;overflow:visible}
