@@ -1,115 +1,131 @@
-:root {
+:root{
   --green:#65b89a;
   --deep:#12332a;
   --light:#f5f7f6;
   --shadow:0 10px 24px rgba(0,0,0,.08);
 }
+
+/* ========== Reset & Base ========== */
 *{box-sizing:border-box}
 html,body{margin:0;padding:0}
-body{font-family:"PingFang TC","Noto Sans TC","Microsoft JhengHei",system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;color:#223}
+body{
+  font-family:"PingFang TC","Noto Sans TC","Microsoft JhengHei",system-ui,-apple-system,
+              BlinkMacSystemFont,"Segoe UI",sans-serif;
+  color:#223;
+}
 .container{width:min(1100px,94%);margin:auto}
-.row{display:flex;align-items:center;gap:18px}
+.row{display:flex;align-items:center;gap:16px}
 
-/* Header */
-.topnav{position:sticky;top:0;z-index:60;background:#fff;border-bottom:1px solid #eaeaea}
-.brand{display:flex;align-items:center;gap:16px;color:var(--green);font-weight:900;padding:18px 0;text-decoration:none}
+/* ========== Top Nav ========== */
+.topnav{
+  position:sticky;top:0;z-index:60;background:#fff;border-bottom:1px solid #eaeaea
+}
+.brand{
+  display:flex;align-items:center;gap:16px;color:var(--green);font-weight:900;
+  padding:18px 0;text-decoration:none
+}
 .brand img{height:64px;width:auto;border-radius:999px}
 .brand span{font-size:24px;letter-spacing:.03em;color:var(--green)}
 .topnav .spacer{flex:1}
-.navlinks .btn-white{background:#fff;border:2px solid var(--green);color:var(--green);padding:10px 18px;border-radius:12px;font-weight:800}
+.navlinks .btn-white{
+  background:#fff;border:2px solid var(--green);color:var(--green);
+  padding:10px 18px;border-radius:12px;font-weight:800;text-decoration:none
+}
 .navlinks .btn-white:hover{background:var(--green);color:#fff}
 
-/* HERO */
-.hero{position:relative;color:#fff;min-height:68vh;display:grid;align-items:center}
-.hero--cover-top::before{content:"";position:absolute;inset:0;background:url('../images/hero.jpg') center top / cover no-repeat;filter:brightness(.93)}
+/* ========== HERO ========== */
+.hero{position:relative;color:#fff;min-height:62vh;display:grid;align-items:center}
+.hero--cover-top::before{
+  content:"";position:absolute;inset:0;
+  background:url('../images/hero.jpg') center 8%/cover no-repeat;
+  filter:brightness(.93)
+}
 .hero .hero-wrap{position:relative;padding:100px 0;text-align:left}
-.hero h1{margin:0 0 12px;font-size:clamp(32px,4.8vw,62px);line-height:1.1;text-shadow:0 6px 18px rgba(0,0,0,.22)}
+.hero h1{margin:0 0 12px;font-size:clamp(32px,4.6vw,62px);line-height:1.1;text-shadow:0 6px 18px rgba(0,0,0,.22)}
 .hero p{margin:0;opacity:.98;font-weight:700;font-size:clamp(16px,2.1vw,22px);text-shadow:0 3px 10px rgba(0,0,0,.18)}
 
-/* --- 左右版面 Grid --- */
-/* 🔥 改為熱門方案在左，營業項目在右 */
-.main-two-col{
-  display:grid;
-  grid-template-columns:1fr 2fr; /* 左1右2 */
-  gap:40px;
-  align-items:start;
-  margin-top:40px;
-}
-.hot-column{min-width:0;margin-top:80px;} /* 熱門方案在左，向下對齊 */
-.right-col{min-width:0;}
-
-@media (max-width:768px){
-  .main-two-col{grid-template-columns:1fr;}
-  .hot-column{margin-top:40px;}
+@media(min-width:1200px){
+  .hero{min-height:56vh}
+  .hero--cover-top::before{background-position:center 10%}
 }
 
-/* Sections */
-.section{padding:40px 0}
+/* ========== Sections ========== */
+.section{padding:80px 0}
 .section.alt{background:var(--light)}
 .section-title{margin:0 0 22px;color:var(--deep);font-size:clamp(22px,2.4vw,32px)}
 
-/* Icon cards */
+/* ========== 兩欄主版：左(熱門方案) / 右(營業+團隊) ========== */
+.main-two-col{
+  display:grid;
+  grid-template-columns: 40% 60%;   /* 左 40%：熱門方案 | 右 60%：內容 */
+  gap:32px;
+  align-items:start;
+  margin-top:60px;
+}
+.left-col,.right-col,.hot-column{min-width:0}
+.hot-column{margin-top:80px} /* 讓熱門方案與右側標題頂端對齊 */
+
+@media(max-width:960px){
+  .main-two-col{grid-template-columns:1fr}
+  .hot-column{margin-top:40px}
+}
+
+/* ========== 熱門方案（佈告欄） ========== */
+.hot-grid{display:grid;gap:20px}
+.hot-card{
+  background:#fff;border:2px solid #d9e3e0;border-radius:12px;
+  box-shadow:0 10px 24px rgba(0,0,0,.10);
+  overflow:hidden;text-align:center;
+  transition:transform .2s ease, box-shadow .2s ease;
+}
+.hot-card:hover{transform:translateY(-3px);box-shadow:0 16px 32px rgba(0,0,0,.14)}
+.hot-card-imgbox{
+  position:relative;width:100%;
+  padding-top: calc(297/210*100%); /* A4 比例 (直向) */
+  background:#f9f9f9;border-bottom:1px solid #eee;overflow:hidden;
+}
+.hot-card-imgbox img{
+  position:absolute;inset:0;width:100%;height:100%;object-fit:contain;
+  transition:transform .18s ease;
+}
+.hot-card:hover .hot-card-imgbox img{transform:scale(1.02)}
+.hot-card-body{padding:18px 16px 24px}
+.hot-card-body .btn{
+  padding:12px 18px;border-radius:999px;font-weight:800;
+  border:2px solid var(--green);background:var(--green);color:#fff;
+  text-decoration:none;display:inline-block;box-shadow:var(--shadow);margin-top:10px;
+}
+
+/* ========== Icon cards（營業項目） ========== */
 .iconcards{display:grid;gap:18px}
 .iconcards.three{grid-template-columns:repeat(3,1fr)}
-.icard{background:#fff;border:1px solid #eaeaea;border-radius:16px;padding:22px;box-shadow:var(--shadow)}
+.icard{
+  background:#fff;border:1px solid #eaeaea;border-radius:16px;
+  padding:22px;box-shadow:var(--shadow)
+}
 .icard .ico{width:60px;height:60px}
 .icard .ico svg{width:60px;height:60px;display:block}
 .icard h3{margin:12px 0 8px}
 .icard ul{margin:0;padding-left:18px}
 .icard li{margin:4px 0}
+@media(max-width:920px){.iconcards.three{grid-template-columns:1fr}}
 
-/* Partners */
+/* ========== Partners（專業團隊） ========== */
 .partners{display:grid;grid-template-columns:repeat(2,1fr);gap:12px}
-.partner{background:#fff;border:1px solid #eaeaea;border-radius:12px;padding:12px 14px;display:flex;align-items:center;gap:10px;box-shadow:var(--shadow)}
+.partner{
+  background:#fff;border:1px solid #eaeaea;border-radius:12px;
+  padding:12px 14px;display:flex;align-items:center;gap:10px;box-shadow:var(--shadow)
+}
 .pico{display:inline-grid;place-items:center;width:38px;height:38px}
 .pico svg{width:26px;height:26px}
 
-/* Hot cards 公告欄 */
-.hot-card{
-  background:#fff;
-  border:2px solid #d9e3e0;
-  border-radius:12px;
-  box-shadow:0 6px 16px rgba(0,0,0,.12);
-  text-align:center;
-  margin-bottom:20px;
-  transition:transform .2s ease, box-shadow .2s ease;
-}
-.hot-card:hover{
-  transform:translateY(-3px);
-  box-shadow:0 10px 24px rgba(0,0,0,.18);
-}
-.hot-card-imgbox{
-  position:relative;
-  width:100%;
-  padding-top:141.4%; /* A4 比例 */
-  background:#f9f9f9;
-  overflow:hidden;
-}
-.hot-card-imgbox img{
-  position:absolute;
-  inset:0;
-  width:100%;
-  height:100%;
-  object-fit:contain;
-  transition:transform .18s ease;
-}
-.hot-card-imgbox img:hover{transform:scale(1.03)}
-.hot-card-body{
-  padding:18px 16px 24px;
-  text-align:center;
-}
-.hot-card-body .btn{
-  padding:12px 18px;
-  border-radius:12px;
-  font-weight:800;
-  border:2px solid var(--green);
-  background:var(--green);
-  color:#fff;
-  text-decoration:none;
-  display:inline-block;
-  box-shadow:var(--shadow);
-  margin-top:10px;
-}
+/* ========== 表單（contact.html 會用到） ========== */
+.form{display:grid;gap:12px}
+.grid2{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+input,textarea{padding:12px 14px;border:1px solid #d6e6e1;border-radius:12px;font:inherit}
+textarea{min-height:120px;resize:vertical}
+.btn{padding:12px 18px;border-radius:12px;font-weight:800;border:2px solid transparent;box-shadow:var(--shadow);text-decoration:none;display:inline-block}
+.btn-secondary{background:var(--green);color:#fff;border-color:var(--green)}
 
-/* Footer */
+/* ========== Footer ========== */
 .footer{background:#0f2b25;color:#cfe3dc;padding:32px 0;text-align:center}
