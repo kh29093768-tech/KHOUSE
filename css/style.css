@@ -27,15 +27,16 @@ body{font-family:"PingFang TC","Noto Sans TC","Microsoft JhengHei",system-ui,-ap
 .hero p{margin:0;opacity:.98;font-weight:700;font-size:clamp(16px,2.1vw,22px);text-shadow:0 3px 10px rgba(0,0,0,.18)}
 
 /* --- 左右版面 Grid --- */
+/* 🔥 改為熱門方案在左，營業項目在右 */
 .main-two-col{
   display:grid;
-  grid-template-columns:2fr 1fr; /* 左2右1 */
+  grid-template-columns:1fr 2fr; /* 左1右2 */
   gap:40px;
   align-items:start;
   margin-top:40px;
 }
-.left-col{min-width:0;}
-.hot-column{min-width:0;margin-top:80px;} /* 對齊營業項目 */
+.hot-column{min-width:0;margin-top:80px;} /* 熱門方案在左，向下對齊 */
+.right-col{min-width:0;}
 
 @media (max-width:768px){
   .main-two-col{grid-template-columns:1fr;}
@@ -64,7 +65,6 @@ body{font-family:"PingFang TC","Noto Sans TC","Microsoft JhengHei",system-ui,-ap
 .pico svg{width:26px;height:26px}
 
 /* Hot cards 公告欄 */
-.hot-scroll{max-height:600px;overflow-y:auto;padding-right:6px}
 .hot-card{
   background:#fff;
   border:2px solid #d9e3e0;
