@@ -1,17 +1,13 @@
-:root{
+:root {
   --green:#65b89a;
   --deep:#12332a;
   --light:#f5f7f6;
   --shadow:0 10px 24px rgba(0,0,0,.08);
 }
-
 *{box-sizing:border-box}
 html,body{margin:0;padding:0}
-body{
-  font-family:"PingFang TC","Noto Sans TC","Microsoft JhengHei",system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
-  color:#223;
-}
-.container{width:min(1200px,94%);margin:auto}
+body{font-family:"PingFang TC","Noto Sans TC","Microsoft JhengHei",system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;color:#223}
+.container{width:min(1100px,94%);margin:auto}
 .row{display:flex;align-items:center;gap:18px}
 
 /* Header */
@@ -20,29 +16,20 @@ body{
 .brand img{height:64px;width:auto;border-radius:999px}
 .brand span{font-size:24px;letter-spacing:.03em;color:var(--green)}
 .topnav .spacer{flex:1}
-.navlinks .btn-white{
-  background:#fff;
-  border:2px solid var(--green);
-  color:var(--green);
-  padding:10px 18px;
-  border-radius:12px;
-  font-weight:800;
-  text-decoration:none;
-  transition:.2s ease;
-}
+.navlinks .btn-white{background:#fff;border:2px solid var(--green);color:var(--green);padding:10px 18px;border-radius:12px;font-weight:800}
 .navlinks .btn-white:hover{background:var(--green);color:#fff}
 
-/* Hero */
+/* HERO */
 .hero{position:relative;color:#fff;min-height:68vh;display:grid;align-items:center}
-.hero--cover-top::before{
-  content:"";
-  position:absolute;inset:0;
-  background:url('../images/hero.jpg') center 6% / cover no-repeat;
-  filter:brightness(.93);
-}
+.hero--cover-top::before{content:"";position:absolute;inset:0;background:url('../images/hero.jpg') center top / cover no-repeat;filter:brightness(.93)}
 .hero .hero-wrap{position:relative;padding:100px 0;text-align:left}
 .hero h1{margin:0 0 12px;font-size:clamp(32px,4.8vw,62px);line-height:1.1;text-shadow:0 6px 18px rgba(0,0,0,.22)}
 .hero p{margin:0;opacity:.98;font-weight:700;font-size:clamp(16px,2.1vw,22px);text-shadow:0 3px 10px rgba(0,0,0,.18)}
+
+/* 主體左右欄 */
+.main-two-col{display:flex;gap:40px;align-items:flex-start;margin-top:40px}
+.left-col{flex:2}
+.hot-column{flex:1;margin-top:80px} /* 🔥 往下移與營業項目對齊 */
 
 /* Sections */
 .section{padding:40px 0}
@@ -65,58 +52,20 @@ body{
 .pico{display:inline-grid;place-items:center;width:38px;height:38px}
 .pico svg{width:26px;height:26px}
 
-/* Home grid layout */
-.home-grid{
-  display:grid;
-  grid-template-columns:2fr 1fr;
-  gap:40px;
-  align-items:start;
-}
-.home-left{}
-.home-right{position:sticky;top:80px}
-
-/* 熱門方案 */
-.hot-scroll{
-  max-height:600px;
-  overflow-y:auto;
-  padding-right:6px;
-}
-.hot-card{
-  background:#fff;
-  border:2px solid #d9e3e0;
-  border-radius:12px;
-  box-shadow:0 6px 18px rgba(0,0,0,.1);
-  text-align:center;
-  margin-bottom:20px;
-  transition:transform .2s ease, box-shadow .2s ease;
-}
-.hot-card:hover{transform:translateY(-3px);box-shadow:0 8px 22px rgba(0,0,0,.15)}
-.hot-card-imgbox{position:relative;width:100%;padding-top:141.4%;overflow:hidden;background:#f9f9f9;border-bottom:1px solid #eee}
-.hot-card-imgbox img{
-  position:absolute;inset:0;
-  width:100%;height:100%;
-  object-fit:contain;
-}
+/* Hot cards */
+.hot-scroll{max-height:600px;overflow-y:auto;padding-right:6px}
+.hot-card{background:#fff;border:2px solid #d9e3e0;border-radius:12px;box-shadow:0 6px 16px rgba(0,0,0,.12);text-align:center;margin-bottom:20px}
+.hot-card-imgbox{position:relative;width:100%;padding-top:141.4%;background:#f9f9f9;overflow:hidden}
+.hot-card-imgbox img{position:absolute;inset:0;width:100%;height:100%;object-fit:contain;transition:transform .18s ease}
+.hot-card-imgbox img:hover{transform:scale(1.03)}
 .hot-card-body{padding:18px 16px 24px;text-align:center}
-.hot-card-body .btn{margin-top:12px;border-radius:12px;font-size:16px;font-weight:700}
+.hot-card-body .btn{padding:12px 18px;border-radius:12px;font-weight:800;border:2px solid var(--green);background:var(--green);color:#fff;text-decoration:none;display:inline-block;box-shadow:var(--shadow)}
 
 /* Footer */
 .footer{background:#0f2b25;color:#cfe3dc;padding:32px 0;text-align:center}
 
 /* RWD */
-@media(max-width:768px){
-  .home-grid{grid-template-columns:1fr}
-  .hot-scroll{max-height:none;overflow:visible}
-  .iconcards.three{grid-template-columns:1fr}
-  .partners{grid-template-columns:1fr}
-  .brand img{height:56px}
-  .brand span{font-size:22px}
-  .hero .hero-wrap{padding:80px 0}
-  .hero--cover-top::before{background-position:center 8%}
-}
-
-.hot-card-link{
-  display:block;
-  text-decoration:none;
-  color:inherit;
+@media(max-width:920px){
+  .main-two-col{flex-direction:column}
+  .hot-column{margin-top:40px}
 }
